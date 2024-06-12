@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework_simplejwt',
     'django_filters',
-
+    'corsheaders',
     #apps
     'account',
     'post',
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -181,3 +182,20 @@ JAZZMIN_SETTINGS = {
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": None
 }
+
+CORS_ALLOWD_ORIGINS = [
+    "localhost:3000" # те хосты, которым разрешено отправлять запросы, узнавать эти хосты нужно у фронтэндщиков
+]
+
+# CORS_ALLOWED_METHODS = [
+#     "GET",
+#     "POST",
+#     "PUT",
+#     "PATCH",
+#     "DELETE",
+#     "OPTIONS"
+#     # пишите те запросы, которым разрешен доступ
+# ]
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
